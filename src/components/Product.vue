@@ -8,6 +8,7 @@
         objectFit="cover"
         :src="product.thumb_image"
         :alt="product.title"
+        @click="goToProductDetailPage()"
       />
       <button
         class="w-full flex justify-center items-center py-3 bg-white/50 absolute bottom-0"
@@ -20,7 +21,7 @@
         </span>
       </button>
     </div>
-    <div class="py-2">
+    <div class="py-2" @click="goToProductDetailPage()">
       <div class="font-bold text-xl mb-1 text-lg">{{ product.title }}</div>
       <p class="text-gray-900 text-base">${{ product.price }}</p>
     </div>
@@ -35,6 +36,9 @@ export default {
   props: ["product"],
   methods: {
     ...mapActions("cart", ["addItemToCart", "removeItemFromCart"]),
+    goToProductDetailPage() {
+      this.$router.push(`/product-detail/${this.product.pid}`);
+    },
   },
   computed: {
     ...mapState("cart", ["items"]),
