@@ -1,6 +1,9 @@
 <template>
   <header class="flex justify-between h-14 border-b border-gray-500 px-8">
-    <div class="flex-1 flex items-center">
+    <div
+      class="flex-1 flex items-center max-w-fit cursor-pointer"
+      @click="goToProductListPage()"
+    >
       <img class="w-10 rounded" :src="icon" alt="William Sonoma Logo Icon" />
       <img class="ml-3" :src="logo" alt="William Sonoma Logo" />
     </div>
@@ -27,6 +30,11 @@ export default {
   },
   computed: {
     ...mapState("cart", ["items"]),
+  },
+  methods: {
+    goToProductListPage() {
+      this.$router.push("/");
+    },
   },
 };
 </script>
