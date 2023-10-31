@@ -7,13 +7,15 @@
     <div class="flex-1 flex justify-end items-center">
       <button class="flex">
         <img class="w-6 mr-2" :src="cart" alt="Cart Icon" />
-        <span>(0)</span>
+        <span>({{ items.length }})</span>
       </button>
     </div>
   </header>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "app-header",
   data: function () {
@@ -22,6 +24,9 @@ export default {
       logo: require("./../assets/ws_horizontal.svg"),
       cart: require("./../assets/grocery-store.png"),
     };
+  },
+  computed: {
+    ...mapState("cart", ["items"]),
   },
 };
 </script>

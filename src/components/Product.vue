@@ -9,11 +9,16 @@
         :src="product.thumb_image"
         :alt="product.title"
       />
-      <div
+      <button
         class="w-full flex justify-center items-center py-3 bg-white/50 absolute bottom-0"
+        @click="
+          !isSelected ? addItemToCart(product) : removeItemFromCart(product)
+        "
       >
-        <p class="uppercase text-gray-500">+ Add to cart</p>
-      </div>
+        <span class="uppercase text-gray-500">
+          {{ isSelected ? "- Remove from" : "+ Add to" }} cart
+        </span>
+      </button>
     </div>
     <div class="py-2">
       <div class="font-bold text-xl mb-1 text-lg">{{ product.title }}</div>
@@ -23,8 +28,19 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "single-product",
   props: ["product"],
+  methods: {
+    ...mapActions("cart", ["addItemToCart", "removeItemFromCart"]),
+  },
+  computed: {
+    ...mapState("cart", ["items"]),
+    isSelected() {
+      return this.items.find((item) => item.pid === this.product.pid);
+    },
+  },
 };
 </script>

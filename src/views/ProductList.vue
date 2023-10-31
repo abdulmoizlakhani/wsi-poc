@@ -22,7 +22,7 @@ export default {
     SingleProduct,
   },
   computed: {
-    ...mapState("product", ["products", "selectedProduct"]),
+    ...mapState("product", ["products"]),
   },
   methods: {
     ...mapActions("product", ["selectProduct"]),
