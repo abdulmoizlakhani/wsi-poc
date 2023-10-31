@@ -14,7 +14,7 @@
 
 <script>
 import SingleProduct from "./Product.vue";
-import { productList } from "./../data/productList.js";
+import { productList } from "./../assets/dummy-data";
 
 export default {
   name: "product-list",
