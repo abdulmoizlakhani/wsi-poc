@@ -1,13 +1,18 @@
 <template>
-  <product-list />
+  <div>
+    <app-header />
+    <product-list />
+  </div>
 </template>
 
 <script>
-import ProductList from "./views/ProductList";
+import AppHeader from "./components/Header.vue";
+import ProductList from "./views/ProductList.vue";
 
 export default {
   name: "App",
   components: {
+    AppHeader,
     ProductList,
   },
 };

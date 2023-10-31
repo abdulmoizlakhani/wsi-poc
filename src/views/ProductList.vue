@@ -1,7 +1,7 @@
 <template>
-  <main class="p-10 mx-auto max-w-7xl">
+  <main class="p-8 mx-auto">
     <div
-      class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-4"
+      class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-5"
     >
       <single-product
         v-for="product in products"
