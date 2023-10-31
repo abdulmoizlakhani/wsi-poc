@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import SingleProduct from "./Product.vue";
+import SingleProduct from "../components/Product";
 import { productList } from "./../assets/dummy-data";
 
 export default {
