@@ -5,24 +5,27 @@
     >
       <single-product
         v-for="product in products"
-        v-bind:product="product"
-        v-bind:key="product.id"
+        :product="product"
+        :key="product.pid"
       />
     </div>
   </main>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 import SingleProduct from "../components/Product";
-import { productList } from "./../assets/dummy-data";
 
 export default {
   name: "product-list",
   components: {
     SingleProduct,
   },
-  data: function () {
-    return { products: productList };
+  computed: {
+    ...mapState("product", ["products", "selectedProduct"]),
+  },
+  methods: {
+    ...mapActions("product", ["selectProduct"]),
   },
 };
 </script>
