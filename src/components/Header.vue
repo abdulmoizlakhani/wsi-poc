@@ -8,7 +8,7 @@
       <img class="ml-3" :src="logo" alt="William Sonoma Logo" />
     </div>
     <div class="flex-1 flex justify-end items-center">
-      <button class="flex">
+      <button class="flex" @click="openDrawer">
         <img class="w-6 mr-2" :src="cart" alt="Cart Icon" />
         <span>({{ items.length }})</span>
       </button>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "app-header",
@@ -32,6 +32,7 @@ export default {
     ...mapState("cart", ["items"]),
   },
   methods: {
+    ...mapActions("drawer", ["openDrawer"]),
     goToProductListPage() {
       this.$router.push("/");
     },
