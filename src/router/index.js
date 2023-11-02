@@ -7,13 +7,13 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: "/", component: ProductList },
-  { path: "/product-detail/:id", component: ProductDetail },
+  { path: "/product-detail/:productId", component: ProductDetail },
   // Add more routes as needed
 ];
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: "history",
 });
 
 export default router;

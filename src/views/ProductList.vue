@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 import SingleProduct from "../components/Product";
 
 export default {
@@ -23,9 +23,6 @@ export default {
   },
   computed: {
     ...mapState("product", ["products"]),
-  },
-  methods: {
-    ...mapActions("product", ["selectProduct"]),
   },
 };
 </script>
