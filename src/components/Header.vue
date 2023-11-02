@@ -1,5 +1,8 @@
 <template>
-  <header class="flex justify-between h-14 border-b border-gray-500 px-8">
+  <header
+    data-test="header"
+    class="flex justify-between h-14 border-b border-gray-500 px-8"
+  >
     <div
       class="flex-1 flex items-center max-w-fit cursor-pointer"
       @click="goToProductListPage()"
