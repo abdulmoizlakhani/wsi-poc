@@ -1,5 +1,5 @@
 <template>
-  <div :key="product.pid" class="cursor-pointer">
+  <div data-test="product-container" :key="product.pid" class="cursor-pointer">
     <div class="w-full relative">
       <img
         class="w-full"
