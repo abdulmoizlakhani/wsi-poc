@@ -1,7 +1,11 @@
 <template>
   <transition name="slide" mode="out-in">
-    <div :class="isDrawerOpen ? 'block' : 'hidden'">
+    <div
+      data-test="side-drawer-container"
+      :class="isDrawerOpen ? 'block' : 'hidden'"
+    >
       <div
+        data-test="side-drawer-overlay"
         :class="isDrawerOpen ? containerClasses : 'w-0'"
         @click="closeDrawer()"
       ></div>
