@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-test="app">
     <app-header />
     <router-view></router-view>
     <side-drawer />
