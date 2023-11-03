@@ -1,29 +1,27 @@
 <template>
-  <div data-test="product-container" :key="product.pid" class="cursor-pointer">
-    <div class="w-full relative">
+  <div data-test="product-container" :key="product.pid" class="cursor-pointer w-full">
+    <div class="w-full flex justify-center relative">
       <img
-        class="w-full"
-        width="250"
-        height="250"
-        objectFit="cover"
+        class="h-[350px]"
         :src="product.thumb_image"
         :alt="product.title"
         @click="goToProductDetailPage()"
       />
       <button
-        class="w-full flex justify-center items-center py-3 bg-white/50 absolute bottom-0"
+        class="w-full flex justify-center items-center py-3 bg-black/50 absolute bottom-0"
         @click="
           !isSelected ? addItemToCart(product) : removeItemFromCart(product)
         "
       >
-        <span class="uppercase text-gray-500">
+        <span class="uppercase text-white">
           {{ isSelected ? "- Remove from" : "+ Add to" }} cart
         </span>
       </button>
     </div>
     <div class="py-2" @click="goToProductDetailPage()">
-      <div class="font-bold text-xl mb-1 text-lg">{{ product.title }}</div>
-      <p class="text-gray-900 text-base">${{ product.price }}</p>
+      <h3 class="font-bold text-xl mb-1">{{ product.title }}</h3>
+      <p class="text-gray-900 mb-1 text-sm">{{ product.description }}</p>
+      <p class="text-gray-900 font-bold text-base">${{ product.price }}</p>
     </div>
   </div>
 </template>

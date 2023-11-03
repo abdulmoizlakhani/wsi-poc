@@ -1,19 +1,49 @@
-import { productList } from "../../assets/dummy-data";
+import axios from "axios";
 
 const state = {
-  products: productList,
+  products: [],
+  loading: true,
+};
+
+const mutations = {
+  setProducts(state, products) {
+    state.products = products;
+  },
+  setLoading(state, status) {
+    state.loading = status;
+  },
+};
+
+const actions = {
+  async fetchProducts({ commit }) {
+    try {
+      const response = await axios.get("https://fakestoreapi.com/products");
+      const products = response.data.map((product) => ({
+        pid: `${product.title}_${product.id}`,
+        title: product.title,
+        description: product.description,
+        price: product.price,
+        thumb_image: product.image,
+      }));
+      commit("setProducts", products);
+      commit("setLoading", false);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  },
 };
 
 const getters = {
   products: (state) => state.products,
   getProductById: (state) => (pid) => {
-    const productArray = Object.values(state.products).filter(item => typeof item === 'object');
-    return productArray.find(product => product.pid === pid);
+    return state.products.find((product) => product.pid === pid);
   },
 };
 
 export default {
   namespaced: true,
   state,
+  mutations,
+  actions,
   getters,
 };
