@@ -23,6 +23,10 @@ describe("ProductList.vue", () => {
       products: productList,
     };
 
+    modules.product.actions = {
+      fetchProducts: jest.fn(), // Mock the action
+    };
+
     store = new Vuex.Store({
       modules: {
         product: {

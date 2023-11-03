@@ -36,7 +36,8 @@ const actions = {
 const getters = {
   products: (state) => state.products,
   getProductById: (state) => (pid) => {
-    return state.products.find((product) => product.pid === pid);
+    const productArray = Object.values(state.products).filter(item => typeof item === 'object');
+    return productArray.find(product => product.pid === pid);
   },
 };
 
