@@ -19,7 +19,7 @@ const actions = {
     try {
       const response = await axios.get("https://fakestoreapi.com/products");
       const products = response.data.map((product) => ({
-        pid: `${product.title}_${product.id}`,
+        pid: `${product.title.toLowerCase().replace(/ /g, "_")}_${product.id}`,
         title: product.title,
         description: product.description,
         price: product.price,
@@ -28,7 +28,7 @@ const actions = {
       commit("setProducts", products);
       commit("setLoading", false);
     } catch (error) {
-      console.log("Error: ", error);
+      console.log("Error: ", error.message);
     }
   },
 };
