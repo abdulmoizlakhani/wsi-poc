@@ -1,9 +1,10 @@
 <template>
-  <main class="p-8 mx-auto">
+  <main data-test="product-list" class="p-8 mx-auto">
     <div
       class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-5"
     >
       <single-product
+        data-test="single-product"
         v-for="product in products"
         :product="product"
         :key="product.pid"
