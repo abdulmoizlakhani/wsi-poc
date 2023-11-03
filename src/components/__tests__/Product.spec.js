@@ -10,7 +10,7 @@ localVue.use(Vuex);
 
 describe("Product.vue", () => {
   const productArray = Object.values(productList).filter(
-    (item, i) => typeof item === "object"
+    (item) => typeof item === "object"
   );
 
   const propsData = { product: productArray[1] };

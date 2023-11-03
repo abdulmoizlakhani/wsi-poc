@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl mx-auto p-4">
+  <div data-test="product-detail" class="max-w-2xl mx-auto p-4">
     <div class="flex flex-col md:flex-row">
       <div class="md:w-1/2">
         <img
@@ -17,6 +17,7 @@
         <div class="mt-4">
           <div class="flex items-center">
             <button
+              data-test="pd-dec-qty-btn"
               @click="decreaseQuantity(product.pid)"
               class="px-4 py-2 rounded bg-zinc-950 text-white"
             >
@@ -24,13 +25,19 @@
             </button>
             <span class="px-4 py-2">{{ productCartQty }}</span>
             <button
-              @click="!!productCartQty ? increaseQuantity(product.pid) : addItemToCart(product)"
+              data-test="pd-inc-qty-btn"
+              @click="
+                !!productCartQty
+                  ? increaseQuantity(product.pid)
+                  : addItemToCart(product)
+              "
               class="px-4 py-2 rounded bg-zinc-950 text-white"
             >
               +
             </button>
           </div>
           <button
+            data-test="pd-atc-btn"
             v-if="productCartQty === 0"
             @click="addItemToCart(product)"
             class="px-4 py-2 rounded bg-zinc-950 text-white mt-4"
