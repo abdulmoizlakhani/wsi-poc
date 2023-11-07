@@ -1,0 +1,9 @@
+{
+  "name": "wsi_poc_components",
+  "exposes": {
+    "./Header": "./src/components/Header.vue",
+    "./Product": "./src/components/Product.vue",
+    "./SideDrawer": "./src/components/SideDrawer.vue",
+    "./styles": "./src/assets/scss/style.scss"
+  }
+}

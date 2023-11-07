@@ -9,6 +9,11 @@
         v-for="product in products"
         :product="product"
         :key="product.pid"
+        imgClass="h-[350px]"
+        :cartItems="cartItems"
+        @addItemToCart="addItemToCart"
+        @removeItemFromCart="removeItemFromCart"
+        @onClickProductTile="onClickProductTile"
       />
     </div>
     <p v-if="loading">Loading products...</p>
@@ -16,8 +21,8 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import SingleProduct from "../components/Product";
+import { mapState, mapGetters, mapActions } from "vuex";
+import SingleProduct from "wsi-poc-components/Product";
 
 export default {
   name: "product-list",
@@ -26,8 +31,13 @@ export default {
   },
   methods: {
     ...mapActions("product", ["fetchProducts"]),
+    ...mapActions("cart", ["addItemToCart", "removeItemFromCart"]),
+    onClickProductTile(product) {
+      this.$router.push(`/product-detail/${product.pid}`);
+    },
   },
   computed: {
+    ...mapGetters("cart", ["cartItems"]),
     ...mapState("product", ["products", "loading"]),
   },
   mounted() {

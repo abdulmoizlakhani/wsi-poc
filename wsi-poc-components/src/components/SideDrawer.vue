@@ -7,7 +7,7 @@
       <div
         data-test="side-drawer-overlay"
         :class="isDrawerOpen ? containerClasses : 'w-0'"
-        @click="closeDrawer()"
+        @click="$emit('closeDrawer')"
       ></div>
       <div class="w-1/3 h-full absolute top-0 right-0">
         <div class="bg-white h-screen p-4">
@@ -26,7 +26,7 @@
               </div>
               <div class="flex items-center">
                 <button
-                  @click="decreaseQuantity(item.pid)"
+                  @click="$emit('decreaseQuantity', item.pid)"
                   class="text-red-500 p-2"
                 >
                   <svg
@@ -46,7 +46,7 @@
                 </button>
                 <span class="text-lg font-medium">{{ item.quantity }}</span>
                 <button
-                  @click="increaseQuantity(item.pid)"
+                  @click="$emit('increaseQuantity', item.pid)"
                   class="text-green-500 p-2"
                 >
                   <svg
@@ -86,8 +86,6 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-
 const containerClasses = "bg-black w-full h-full absolute top-0 opacity-60";
 
 export default {
@@ -95,16 +93,11 @@ export default {
   data: function () {
     return { containerClasses };
   },
+  props: ["isDrawerOpen", "cartItems", "cartSubtotal"],
   methods: {
-    ...mapActions("drawer", ["closeDrawer"]),
-    ...mapActions("cart", ["increaseQuantity", "decreaseQuantity"]),
     formatCurrency(amount) {
       return `$${amount.toFixed(2)}`;
     },
-  },
-  computed: {
-    ...mapGetters("drawer", ["isDrawerOpen"]),
-    ...mapGetters("cart", ["cartItems", "cartSubtotal"]),
   },
 };
 </script>
