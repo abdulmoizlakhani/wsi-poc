@@ -21,6 +21,7 @@ jobs:
           node-version: 18
 
       - name: Build Vue App
+        working-directory: wsi-poc-components
         run: sudo npm run build
 
       - name: Install Surge
