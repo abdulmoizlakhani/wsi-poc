@@ -1,0 +1,32 @@
+name: "WSI POC Components"
+
+on:
+  push:
+    branches: [master-mfe]
+  pull_request:
+    branches: [master-mfe]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install
+
+      - name: Build Vue App
+        run: sudo npm run build
+
+      - name: Install Surge
+        run: npm install --global surge
+
+      - name: Deploy Vue App to Surge
+        run: surge ./wsi-poc-components-amlakhani.surge.sh --token ${{ secrets.SURGE_TOKEN }}
