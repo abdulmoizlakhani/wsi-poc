@@ -4,11 +4,11 @@ on:
   push:
     branches: [master-mfe]
     paths:
-      - wsi-poc-components/**
+    - 'wsi-poc-components/**'
   pull_request:
     branches: [master-mfe]
     paths:
-      - wsi-poc-components/**
+    - 'wsi-poc-components/**'
 
 jobs:
   build:
