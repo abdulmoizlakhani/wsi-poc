@@ -9,7 +9,7 @@ on:
     paths: ["wsi-poc-poc/**", "wsi-poc-components/**", ".github/workflows/**"]
 
 jobs:
-  build:
+  build_components:
     name: WSI POC Components Build
     runs-on: ubuntu-latest
 
@@ -35,7 +35,7 @@ jobs:
       - name: Deploy Vue App to Surge
         run: surge ./wsi-poc-components/dist wsi-poc-components-amlakhani.surge.sh --token ${{ secrets.SURGE_TOKEN }}
   
-  build:
+  build_app:
     name: WSI POC APP Build
     runs-on: ubuntu-latest
 
