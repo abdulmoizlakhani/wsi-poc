@@ -19,6 +19,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 18
+      
+      - name: Install Vue CLI
+        run: sudo npm install -g @vue/cli
+
 
       - name: Build Vue App
         working-directory: wsi-poc-components
