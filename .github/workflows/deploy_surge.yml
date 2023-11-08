@@ -3,10 +3,10 @@ name: "WSI POC Components"
 on:
   push:
     branches: [master-mfe]
-    paths: ['wsi-poc-components/**', '.github/workflows/**']
+    paths: ["wsi-poc-components/**", ".github/workflows/**"]
   pull_request:
     branches: [master-mfe]
-    paths: ['wsi-poc-components/**', '.github/workflows/**']
+    paths: ["wsi-poc-components/**", ".github/workflows/**"]
 
 jobs:
   build:
@@ -19,12 +19,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 18
-      
-      - name: Install Vue CLI Service
-        run: sudo npm install -g @vue/cli-service
-      
-      - name: Install CLI Plugin Babel
-        run: sudo npm install -g @vue/cli-plugin-babel
+
+      - name: Install node_modules
+        working-directory: wsi-poc-components
+        run: sudo npm install
 
       - name: Build Vue App
         working-directory: wsi-poc-components
