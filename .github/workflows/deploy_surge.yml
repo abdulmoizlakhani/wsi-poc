@@ -20,8 +20,11 @@ jobs:
         with:
           node-version: 18
       
-      - name: Install Vue CLI
+      - name: Install Vue CLI Service
         run: sudo npm install -g @vue/cli-service
+      
+      - name: Install CLI Plugin Babel
+        run: sudo npm install -g @vue/cli-plugin-babel
 
       - name: Build Vue App
         working-directory: wsi-poc-components
