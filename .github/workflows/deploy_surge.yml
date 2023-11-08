@@ -3,10 +3,10 @@ name: "WSI POC Components"
 on:
   push:
     branches: [master-mfe]
-    paths: ['wsi-poc-components/**']
+    paths: ['wsi-poc-components/**', '.github/workflows/**']
   pull_request:
     branches: [master-mfe]
-    paths: ['wsi-poc-components/**']
+    paths: ['wsi-poc-components/**', '.github/workflows/**']
 
 jobs:
   build:
