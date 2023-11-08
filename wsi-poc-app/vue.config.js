@@ -1,7 +1,7 @@
 const { defineConfig } = require("@vue/cli-service");
 
 module.exports = defineConfig({
-  publicPath: "http://localhost:8080/",
+  publicPath: "https://wsi-poc-app-amlakhani.surge.sh/",
   transpileDependencies: true,
   chainWebpack: (config) => {
     config.optimization.delete("splitChunks");
@@ -11,7 +11,7 @@ module.exports = defineConfig({
         {
           remotes: {
             "wsi-poc-components":
-              "wsi_poc_components@http://localhost:8081/remoteEntry.js",
+              "wsi_poc_components@https://wsi-poc-components-amlakhani.surge.sh/remoteEntry.js",
           },
           shared: {
             vue: {

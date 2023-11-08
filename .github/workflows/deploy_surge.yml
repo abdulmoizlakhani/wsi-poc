@@ -3,13 +3,14 @@ name: "WSI POC Components"
 on:
   push:
     branches: [master-mfe]
-    paths: ["wsi-poc-components/**", ".github/workflows/**"]
+    paths: ["wsi-poc-poc/**", "wsi-poc-components/**", ".github/workflows/**"]
   pull_request:
     branches: [master-mfe]
-    paths: ["wsi-poc-components/**", ".github/workflows/**"]
+    paths: ["wsi-poc-poc/**", "wsi-poc-components/**", ".github/workflows/**"]
 
 jobs:
   build:
+    name: WSI POC Components Build
     runs-on: ubuntu-latest
 
     steps:
@@ -33,3 +34,29 @@ jobs:
 
       - name: Deploy Vue App to Surge
         run: surge ./wsi-poc-components/dist wsi-poc-components-amlakhani.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+  
+  build:
+    name: WSI POC APP Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: Install node_modules
+        working-directory: wsi-poc-app
+        run: sudo npm install
+
+      - name: Build Vue App
+        working-directory: wsi-poc-app
+        run: sudo npm run build
+
+      - name: Install Surge
+        run: npm install --global surge
+
+      - name: Deploy Vue App to Surge
+        run: surge ./wsi-poc-app/dist wsi-poc-app-amlakhani.surge.sh --token ${{ secrets.SURGE_TOKEN_2 }}
