@@ -3,12 +3,10 @@ name: "WSI POC Components"
 on:
   push:
     branches: [master-mfe]
-    paths:
-    - 'wsi-poc-components/**'
+    paths: ['wsi-poc-components/**']
   pull_request:
     branches: [master-mfe]
-    paths:
-    - 'wsi-poc-components/**'
+    paths: ['wsi-poc-components/**']
 
 jobs:
   build:
@@ -21,10 +19,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 18
-
-      - uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: install
 
       - name: Build Vue App
         run: sudo npm run build
