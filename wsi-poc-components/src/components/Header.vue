@@ -17,7 +17,7 @@
     <div class="flex-1 flex justify-end items-center">
       <button class="flex" @click="$emit('openDrawer')">
         <img class="w-6 mr-2" :src="cartIcon" alt="Cart Icon" />
-        <span>({{ cartItems?.length || 0 }})</span>
+        <span>({{ cartItems.length }})</span>
       </button>
     </div>
   </header>
