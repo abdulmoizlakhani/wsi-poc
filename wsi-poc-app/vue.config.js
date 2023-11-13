@@ -1,8 +1,11 @@
 const { defineConfig } = require("@vue/cli-service");
 
 module.exports = defineConfig({
-  publicPath: "https://wsi-poc-app-amlakhani.surge.sh/",
+  publicPath: "http://localhost:8080/",
   transpileDependencies: true,
+  devServer: {
+    port: 8080,
+  },
   chainWebpack: (config) => {
     config.optimization.delete("splitChunks");
     config
