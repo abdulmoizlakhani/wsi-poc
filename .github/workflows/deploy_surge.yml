@@ -1,11 +1,11 @@
-name: "WSI POC Components"
+name: "WSI POC with Chatbot"
 
 on:
   push:
-    branches: [master-mfe]
+    branches: [master-mfe-chatbot]
     paths: ["wsi-poc-app/**", "wsi-poc-components/**", ".github/workflows/**"]
   pull_request:
-    branches: [master-mfe]
+    branches: [master-mfe-chatbot]
     paths: ["wsi-poc-app/**", "wsi-poc-components/**", ".github/workflows/**"]
 
 jobs:
@@ -33,7 +33,7 @@ jobs:
         run: npm install --global surge
 
       - name: Deploy Vue App to Surge
-        run: surge ./wsi-poc-components/dist wsi-poc-components-amlakhani.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+        run: surge ./wsi-poc-components/dist wsi-poc-components-amlakhani.surge.sh --token ${{ secrets.SURGE_CHATBOT_TOKEN }}
   
   build_app:
     name: WSI POC APP Build
@@ -59,4 +59,4 @@ jobs:
         run: npm install --global surge
 
       - name: Deploy Vue App to Surge
-        run: surge ./wsi-poc-app/dist wsi-poc-app-amlakhani.surge.sh --token ${{ secrets.SURGE_TOKEN_2 }}
+        run: surge ./wsi-poc-app/dist wsi-poc-app-amlakhani.surge.sh --token ${{ secrets.SURGE_CHATBOT_TOKEN_2 }}
