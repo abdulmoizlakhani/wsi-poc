@@ -56,7 +56,7 @@ jobs:
         run: sudo npm run build
 
       - name: Install Surge
-        run: npm install --global surge
+        run: npm install --global surge 
 
       - name: Deploy Vue App to Surge
         run: surge ./wsi-poc-app/dist wsi-poc-app-amlakhani.surge.sh --token ${{ secrets.SURGE_TOKEN_2 }}
