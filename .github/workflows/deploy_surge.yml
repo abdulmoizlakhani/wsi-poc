@@ -50,6 +50,13 @@ jobs:
       - name: Install node_modules
         working-directory: wsi-poc-app
         run: sudo npm install
+      
+      - name: Environment Variables
+        working-directory: wsi-poc-app
+        run: |
+          touch .env
+          echo "VUE_APP_CHATBOT_ID=${{ secrets.VUE_APP_CHATBOT_ID }}" > .env
+          cat .env
 
       - name: Build Vue App
         working-directory: wsi-poc-app
@@ -59,4 +66,4 @@ jobs:
         run: npm install --global surge
 
       - name: Deploy Vue App to Surge
-        run: surge ./wsi-poc-app/dist wsi-poc-app-amlakhani.surge.sh --token ${{ secrets.SURGE_CHATBOT_TOKEN_2 }}
+        run: surge ./wsi-poc-app/dist wsi-poc-chatbot-app-amlakhani.surge.sh --token ${{ secrets.SURGE_CHATBOT_TOKEN_2 }}

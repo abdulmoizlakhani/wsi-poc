@@ -1,7 +1,7 @@
 const { defineConfig } = require("@vue/cli-service");
 
 module.exports = defineConfig({
-  publicPath: "https://wsi-poc-app-amlakhani.surge.sh/",
+  publicPath: "https://wsi-poc-chatbot-app-amlakhani.surge.sh/",
   transpileDependencies: true,
   chainWebpack: (config) => {
     config.optimization.delete("splitChunks");
